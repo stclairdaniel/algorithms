@@ -58,7 +58,8 @@ class BinarySearchTree
   end
 
   def delete(value)
-
+    return nil unless @root.value
+    BinarySearchTree.delete!(@root, value)
   end
 
   def self.insert!(node, value)
@@ -131,23 +132,22 @@ class BinarySearchTree
   def self.delete_min!(node)
     return nil unless node
     if node.left
-      min = delete_min!(node.left)
-      if min && min.right
-        node.left = min.right
-      end
+      node.left = delete_min!(node.left)
     else
-      #delete leaf
+      if node.right
+        return node.right
+      else
+        return nil
+      end
     end
   end
 
   def self.delete!(node, value)
-    # return nil unless node
-    # if node.value == value
-    # end
-    # if value <= node.value
-    #   delete!(node.left, value)
-    # else
-    #   delete!(node.right, value)
-    # end
+    return nil unless node
+    if value <= node.value
+      node.left = delete!(node.left, value)
+    else
+      node.right = delete!(node.right, value)
+    end
   end
 end
