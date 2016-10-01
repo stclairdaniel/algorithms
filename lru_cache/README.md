@@ -29,7 +29,3 @@ Phase 5 uses the Linked List implementation in place of arrays for the buckets i
 ## Phase 6
 
 Finally, the HashMap is used to implement an LRU cache. The hash map points to a link in the linked list, so its constant lookup time is used to find the link, which contains the key and value. When a new link it inserted, its value is computed by calling the passed in proc. When a link is queried, it moved to the front position of the list, and the oldest item is ejected from the list if the cache size is at its maximum.  
-
-## Phase 7
-
-This phase implements dynamic arrays from a basic static array. Common array methods, such as push, pop, shift, unshift, and each were all implemented from scratch.
